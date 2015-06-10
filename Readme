@@ -1,1 +1,7 @@
-Photos were tested in the project root folder
+Photo album and organization application made in Java using 100% native Java.Swing components and no outside libraries.
+
+Notable:
+  MVC Architecture
+  Custom built controls
+  User interface design
+  

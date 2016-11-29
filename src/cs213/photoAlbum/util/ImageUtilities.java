@@ -21,15 +21,39 @@ public class ImageUtilities {
 	public static BufferedImage makePhotoThumbnail(String photo, int width,
 			int height) throws IOException {
 
-		System.out.println(photo);
+		// System.out.println(photo);
 		return makePhotoThumbnail(new File(photo), width, height);
 	}
 
+	/**
+	 * Create and return a thumbnail
+	 * 
+	 * @param photo
+	 *            to convert to thumbnail
+	 * @param width
+	 *            of the new thumbnail
+	 * @param height
+	 *            of the new thumbnail
+	 * @return BufferedImage of new Thumbnail
+	 * @throws IOException
+	 */
 	public static BufferedImage makePhotoThumbnail(File photo, int width,
 			int height) throws IOException {
 		return makePhotoThumbnail(ImageIO.read(photo), photo, width, height);
 	}
 
+	/**
+	 * Create and return a batch of thumbnails
+	 * 
+	 * @param photos
+	 *            to convert to thumbnails
+	 * @param width
+	 *            of the new thumbnail
+	 * @param height
+	 *            of the new thumbnail
+	 * @return BufferedImage array of all thumbnails
+	 * @throws IOException
+	 */
 	public static BufferedImage[] getMultipleThumbnails(BufferedImage[] photos,
 			int width, int height) throws IOException {
 
@@ -44,6 +68,18 @@ public class ImageUtilities {
 
 	}
 
+	/**
+	 * Create and return a thumbnail
+	 * 
+	 * @param photo
+	 *            to convert to thumbnail
+	 * @param width
+	 *            of the new thumbnail
+	 * @param height
+	 *            of the new thumbnail
+	 * @return BufferedImage of new Thumbnail
+	 * @throws IOException
+	 */
 	public static BufferedImage makePhotoThumbnail(BufferedImage photo,
 			File path, int width, int height) throws IOException {
 
@@ -90,6 +126,18 @@ public class ImageUtilities {
 		return combined;
 	}
 
+	/**
+	 * Create and return a thumbnail and don't save it right away
+	 * 
+	 * @param photo
+	 *            to convert to thumbnail
+	 * @param width
+	 *            of the new thumbnail
+	 * @param height
+	 *            of the new thumbnail
+	 * @return BufferedImage of new Thumbnail
+	 * @throws IOException
+	 */
 	public static BufferedImage makePhotoThumbnailWithoutSave(
 			BufferedImage photo, int width, int height) throws IOException {
 
@@ -138,6 +186,20 @@ public class ImageUtilities {
 		return combined;
 	}
 
+	/**
+	 * Create and return a thumbnail for an album
+	 * 
+	 * @param BufferedImage array of album photos
+	 *            to convert to thumbnail
+	 * @param width
+	 *            of the new thumbnail
+	 * @param height
+	 *            of the new thumbnail
+	 * @param int of the maxmimum number of pictures in the thumbnail           
+	 * @return BufferedImage of new Thumbnail
+	 * 
+	 * @throws IOException
+	 */
 	public static BufferedImage createAlbumThumbnail(BufferedImage[] photos,
 			int density, int width, int height) throws IOException {
 
@@ -164,17 +226,17 @@ public class ImageUtilities {
 		g.setColor(Color.white);
 		g.drawRect(0, 0, combined.getWidth(), combined.getHeight());
 
-		if(photos.length == 0) {
-			BufferedImage albumBackground = ImageIO.read(new File(GuiView.containerFolder + "/blankAlbum.png"));
+		if (photos.length == 0) {
+			BufferedImage albumBackground = ImageIO.read(new File(
+					GuiView.containerFolder + "/blankAlbum.png"));
 			g.drawImage(albumBackground, 0, 0, width, height, null);
-		}
-		else {
-		
+		} else {
+
 			int eachWidth = width / perLine;
 			int eachHeight = height / perLine;
-	
+
 			for (int i = 0; i < photos.length && i < perLine * perLine; i++) {
-	
+
 				if (photos[i] != null) {
 					g.drawImage(
 							makePhotoThumbnailWithoutSave(photos[i], eachWidth,
@@ -188,6 +250,11 @@ public class ImageUtilities {
 		return combined;
 	}
 
+	/**
+	 * Convert image object to BufferedImage object
+	 * @param Image img to convert
+	 * @return BufferedImage of Image object
+	 */
 	public static BufferedImage toBufferedImage(Image img) {
 		if (img instanceof BufferedImage) {
 			return (BufferedImage) img;
@@ -205,6 +272,13 @@ public class ImageUtilities {
 		return bufferedImage;
 	}
 
+	/**
+	 * Save the buffered image to the specified path
+	 * @param image to save
+	 * @param path to save to
+	 * @return Path of the image saved
+	 * @throws IOException
+	 */
 	private static Path saveImage(BufferedImage image, File path)
 			throws IOException {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();

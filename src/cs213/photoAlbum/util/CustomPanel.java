@@ -26,6 +26,9 @@ public class CustomPanel extends JPanel {
 
 	private LinearGradientPaint p;
 
+	/**
+	 * Paints the panel
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
@@ -35,6 +38,12 @@ public class CustomPanel extends JPanel {
 		drawBackground(g2);
 	}
 
+	/**
+	 * Draw a gradient on the background of the panel
+	 * 
+	 * @param g2d
+	 *            to draw to
+	 */
 	public void drawBackground(Graphics2D g2d) {
 
 		if (p == null) {
@@ -63,22 +72,46 @@ public class CustomPanel extends JPanel {
 
 	}
 
+	/**
+	 * Set the gradient of the background
+	 * 
+	 * @param LinearGradientPaint
+	 *            p
+	 */
 	public void setGradientPain(LinearGradientPaint p) {
 		this.p = p;
 	}
 
+	/**
+	 * Get the opacity of the panel
+	 * 
+	 * @return float opacity of the panel
+	 */
 	public float getOpacity() {
 		return opacity;
 	}
 
+	/**
+	 * Set the opacity of the panel
+	 * 
+	 * @param float opacity of the panel
+	 */
 	public void setOpacity(float opacity) {
 		this.opacity = opacity;
 	}
 
+	/**
+	 * Gradient is reversed?
+	 * @return true if reversed false otherwise
+	 */
 	public boolean isReversed() {
 		return reversed;
 	}
 
+	/**
+	 * Reverse the gradient
+	 * @param true if should be reversed false otherwise
+	 */
 	public void setReversed(boolean reversed) {
 		this.reversed = reversed;
 	}

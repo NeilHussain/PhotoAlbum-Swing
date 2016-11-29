@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Album implements Serializable {
+public class Album implements Serializable{
 
 	private ArrayList<Photo> photos = new ArrayList<Photo>();
 	private String name;
@@ -222,10 +222,16 @@ public class Album implements Serializable {
 		this.latest = latest;
 	}
 	
+	/**Set the caption of the album
+	*@param String to set the caption to
+	*/
 	public void setCaption(String caption){
 	this.caption = caption;
 	}
 	
+	/**Get the caption of the album
+	*@return String of the album's caption
+	*/
 	public String getCaption(){
 	
 	return this.caption;

@@ -31,7 +31,16 @@ public class MenuButtonsContainer extends JPanel {
 		this(null, labels, buttonWidth, buttonHeight, color, initSelected);
 	}
 
-	MenuButtonsContainer(ActionListener e, String[] labels, int buttonWidth,
+	/**
+	 * Create a container for the top menu buttons
+	 * @param e, actionlistener to capture events
+	 * @param labels, String[] of the labesl of the buttons
+	 * @param buttonWidth, int of the width of the button
+	 * @param buttonHeight, int of the height of the button
+	 * @param color, color the button should be
+	 * @param initSelected, int of the first button that should be selected on create
+	 */
+	public MenuButtonsContainer(ActionListener e, String[] labels, int buttonWidth,
 			int buttonHeight, Color color, int initSelected) {
 
 		size = new Dimension(labels.length * buttonWidth, buttonHeight);
@@ -81,15 +90,25 @@ public class MenuButtonsContainer extends JPanel {
 		this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 
 	}
-
+	
+	/**
+	 * Get the preferred size of the PhotoViewer
+	 * 
+	 * @return Dimension object containing width and height
+	 */
 	public Dimension getPreferredSize() {
 		return size;
 	}
 
+	/**
+	 * Add an action listener to this component
+	 * @param listener to add to this container
+	 */
 	public void addActionListener(ActionListener listener) {
 		listeners.add(listener);
 	}
 
+	
 	private void notifyListeners(ActionEvent evt) {
 		// ActionEvent evt = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
 		// new String(), e.getWhen(), e.getModifiers());
@@ -101,18 +120,36 @@ public class MenuButtonsContainer extends JPanel {
 		}
 	}
 
+	/**
+	 * Get the minimum size of the PhotoViewer
+	 * 
+	 * @return Dimension object containing minimum width and height
+	 */
 	public Dimension getMinimumSize() {
 		return getPreferredSize();
 	}
-
+	
+	/**
+	 * Get the maximum size of the PhotoViewer
+	 * 
+	 * @return Dimension object containing the maximum width and height
+	 */
 	public Dimension getMaximumSize() {
 		return getPreferredSize();
 	}
 
+	/**
+	 * Get the menu button that is currently selected
+	 * @return button that is currently enabled
+	 */
 	public int whichTabbed() {
 		return tabbed;
 	}
 
+	/**
+	 * Set the menu button that is should be selected
+	 * @param button that is currently enabled
+	 */
 	public void setTabbed(int tabbed) {
 		this.tabbed = tabbed;
 		for (int i = 0; i < buttons.length; i++) {

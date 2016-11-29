@@ -203,6 +203,11 @@ public class PhotoEditorController {
 		view.refreshPhotoView();
 	}
 
+	/**
+	 * Get the tags of this photo
+	 * 
+	 * @return String of all tags
+	 */
 	public String getTagsString() {
 		String tagsString = null;
 		if (this.model.getTags().length == 0) {
@@ -222,6 +227,11 @@ public class PhotoEditorController {
 		return tagsString;
 	}
 
+	/**
+	 * Get the tags of this photo
+	 * 
+	 * @return String[] of all tags
+	 */
 	public String[] getTagStrings() {
 
 		ArrayList<String> tagStrings = new ArrayList<String>();
@@ -359,6 +369,11 @@ public class PhotoEditorController {
 
 	}
 
+	/**
+	 * Get the album of this photo
+	 * 
+	 * @return String album name
+	 */
 	public String getAlbum() {
 		return model.getAlbums()[0].getName();
 

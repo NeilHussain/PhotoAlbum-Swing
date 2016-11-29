@@ -1,94 +1,161 @@
 data/data/thumbnails/thumbnail+DafnaHome.png.i
 data/docs/cs213/photoAlbum/model/Album.html.i
 data/data/AppPhotos/Something.png.d
-data/src/cs213/photoAlbum/model/Tag.java.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/control/package-tree.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/control/class-use/PhotoEditorController.html.i
+data/data/thumbnails/thumbnail+918.jpg.i
 data/docs/index.html.i
 data/data/AppPhotos/Something.png.i
 data/src/cs213/photoAlbum/util/MenuButton.java.i
+data/docs/cs213/photoAlbum/simpleview/package-frame.html.i
 data/src/cs213/photoAlbum/Controller/PhotoEditorController.java.i
+data/docs/Java Docs CmdView/deprecated-list.html.i
 data/docs/cs213/photoAlbum/simpleview/package-tree.html.i
 data/bin/cs213/photoAlbum/model/Album.class.orig.i
+data/docs/JavaDocs GUI View /cs213/photoAlbum/guiview/package-tree.html.i
 data/data/AppPhotos/arrowRight.png.i
+data/docs/JavaDocs GUI View /stylesheet.css.i
+data/src/cs213/photoAlbum/model/Tag.java.i
+data/docs/Java Docs CmdView/stylesheet.css.i
+data/src/cs213/photoAlbum/Controller/AlbumEditorController.java.i
 data/data/AppPhotos/backButtonDisabled.png.i
+data/docs/cs213/photoAlbum/model/package-frame.html.i
 data/data/AppPhotos/thumbBig.png.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/class-use/Saving.html.i
+data/docs/Java Docs CmdView/constant-values.html.i
 data/data/AppPhotos/searchButtonDisabled.png.i
+data/docs/Java Docs CmdView/index-files/index-1.html.i
 data/AppPhotos/settings.png.i
 data/docs/cs213/photoAlbum/simpleview/package-summary.html.i
-data/src/cs213/photoAlbum/Controller/AlbumEditorController.java.i
+data/bin/cs213/photoAlbum/control/BackendController.class.orig.i
 data/data/thumbnails/thumbnail+1m.png.i
 data/docs/index-files/index-6.html.i
 data/docs/cs213/photoAlbum/model/package-tree.html.i
 data/src/cs213/photoAlbum/model/User.java.i
 data/src/cs213/photoAlbum/model/Photo.java.i
+data/docs/Java Docs CmdView/index-files/index-3.html.i
 data/docs/cs213/photoAlbum/simpleview/class-use/CmdView.html.i
 data/docs/cs213/photoAlbum/control/class-use/PhotoEditorController.html.i
 data/docs/overview-summary.html.i
-data/1m.png.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/control/package-use.html.i
+data/docs/JavaDocs GUI View /serialized-form.html.i
+data/docs/JavaDocs GUI View /index-files/index-3.html.i
+data/docs/Java Docs CmdView/index-files/index-4.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/view/class-use/View.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/simpleview/CmdView.html.i
+data/medusa.jpg.i
 data/docs/cs213/photoAlbum/model/class-use/Saving.html.i
 data/data/thumbnails/thumbnail+black magic.png.i
 data/src/cs213/photoAlbum/util/CollectionView.java.i
 data/bin/cs213/photoAlbum/control/AlbumEditorController.class.i
+data/data/AppPhotos/thumbSmall.png.i
 data/docs/index-files/index-11.html.i
+data/docs/cs213/photoAlbum/control/class-use/UserEditorController.html.i
 data/bin/cs213/photoAlbum/control/BackendController.class.i
 data/data/AppPhotos/background.png.i
+data/docs/ReadMe.txt.i
 data/data/AppPhotos/background.png.d
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/class-use/Tag.html.i
 data/.hgtags.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/Saving.html.i
+data/docs/JavaDocs GUI View /overview-tree.html.i
 data/bin/cs213/photoAlbum/Controller/UserEditorController.class.i
 data/335.jpg.d
+data/docs/Java Docs CmdView/cs213/photoAlbum/control/AlbumEditorController.html.i
 data/335.jpg.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/simpleview/package-tree.html.i
 data/docs/cs213/photoAlbum/model/package-summary.html.i
-data/docs/index-files/index-2.html.i
+data/918.jpg.i
 data/bin/cs213/photoAlbum/model/Backend.class.i
 data/src/cs213/photoAlbum/guiview/BuildPanel.java.i
+data/data/AppPhotos/makeAlbumButton.png.i
+data/918.jpg.d
 data/data/thumbnails/thumbnail+settings.png.i
 data/docs/cs213/photoAlbum/model/class-use/Tag.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/control/class-use/AlbumEditorController.html.i
 data/src/cs213/photoAlbum/control/PhotoEditorController.java.i
 data/docs/index-files/index-3.html.i
+data/docs/JavaDocs GUI View /index.html.i
+data/bin/cs213/photoAlbum/view/View.class.i
 data/data/AppPhotos/backButton.png.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/control/package-summary.html.i
 data/src/cs213/photoAlbum/guiview/BuildCollectionViews.java.i
 data/bin/cs213/photoAlbum/model/User.class.i
 data/docs/cs213/photoAlbum/simpleview/package-use.html.i
+data/docs/Java Docs CmdView/overview-frame.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/view/package-frame.html.i
 data/docs/cs213/photoAlbum/control/package-summary.html.i
 data/src/cs213/photoAlbum/model/Album.java.i
+data/docs/Java Docs CmdView/allclasses-frame.html.i
+data/docs/Java Docs CmdView/overview-summary.html.i
+data/data/thumbnails/thumbnail+2015m4.jpg.i
 data/ss.png.i
-data/me.jpg.i
+data/docs/storyboard.pdf.d
+data/docs/Java Docs CmdView/cs213/photoAlbum/view/package-tree.html.i
+data/bin/cs213/photoAlbum/Controller/PhotoEditorController.class.i
 data/docs/cs213/photoAlbum/simpleview/CmdView.html.i
 data/docs/cs213/photoAlbum/control/PhotoEditorController.html.i
 data/data/AppPhotos/settings.png.i
+data/docs/Java Docs CmdView/index-files/index-8.html.i
 data/ss.png.d
 data/bin/cs213/photoAlbum/control/UserEditorController.class.i
 data/data/AppPhotos/deleteButton.png.i
+data/docs/Java Docs CmdView/index-files/index-7.html.i
 data/docs/cs213/photoAlbum/model/Saving.html.i
-data/docs/storyboard.pdf.i
-data/docs/storyboard.pdf.d
+data/docs/JavaDocs GUI View /package-list.i
+data/data/thumbnails/thumbnail+veneno.jpg.i
+data/me.jpg.i
+data/data/thumbnails/thumbnail+m4.jpg.i
+data/docs/JavaDocs GUI View /index-files/index-1.html.i
 data/bin/cs213/photoAlbum/model/Tag.class.i
+data/docs/cs213/photoAlbum/model/Photo.html.i
 data/data/AppPhotos/me.jpg.i
+data/docs/storyboard.pdf.i
 data/bin/cs213/photoAlbum/model/Photo.class.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/control/UserEditorController.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/view/package-summary.html.i
 data/AppPhotos/me.jpg.i
 data/docs/serialized-form.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/simpleview/package-use.html.i
 data/bin/cs213/photoAlbum/simpleview/CmdView.class.i
 data/docs/cs213/photoAlbum/model/class-use/Photo.html.i
 data/docs/allclasses-frame.html.i
 data/bin/cs213/photoAlbum/control/PhotoEditorController.class.i
 data/docs/cs213/photoAlbum/model/class-use/User.html.i
 data/data/AppPhotos/forwardButtonDisabled.png.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/User.html.i
+data/bin/cs213/photoAlbum/guiview/GuiView$20.class.i
+data/docs/Java Docs CmdView/index.html.i
 data/src/cs213/photoAlbum/control/UserEditorController.java.i
-data/1m.png.d
+data/bin/cs213/photoAlbum/model/Saving.class.i
+data/data/AppPhotos/addButton.png.i
 data/docs/help-doc.html.i
 data/src/cs213/photoAlbum/util/RoundedCornerBorder.java.i
 data/bin/cs213/photoAlbum/model/Album.class.i
-data/docs/cs213/photoAlbum/model/package-frame.html.i
+data/docs/index-files/index-2.html.i
+data/docs/Java Docs CmdView/overview-tree.html.i
+data/docs/JavaDocs GUI View /cs213/photoAlbum/guiview/package-frame.html.i
+data/docs/Java Docs CmdView/serialized-form.html.i
+data/docs/JavaDocs GUI View /cs213/photoAlbum/guiview/GuiView.html.i
 data/lambo.jpg.i
 data/src/cs213/photoAlbum/control/AlbumEditorController.java.i
 data/data/users.dat.i
 data/data/thumbnails/thumbnail+lambo.jpg.i
-data/docs/cs213/photoAlbum/simpleview/package-frame.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/simpleview/package-frame.html.i
 data/representations.aird.i
 data/docs/worksplit.i
+data/docs/JavaDocs GUI View /index-files/index-5.html.i
+data/docs/JavaDocs GUI View /cs213/photoAlbum/guiview/class-use/GuiView.html.i
+data/AppPhotos/Something.png.d
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/class-use/Photo.html.i
 data/docs/allclasses-noframe.html.i
 data/src/cs213/photoAlbum/model/Backend.java.i
 data/docs/index-files/index-13.html.i
+data/docs/JavaDocs GUI View /cs213/photoAlbum/guiview/package-summary.html.i
 data/docs/cs213/photoAlbum/view/package-tree.html.i
+data/docs/cs213/photoAlbum/view/package-use.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/simpleview/package-summary.html.i
+data/docs/Java Docs CmdView/index-files/index-13.html.i
 data/src/cs213/photoAlbum/guiview/ActionCatchers.java.i
 data/src/cs213/photoAlbum/util/ImageUtilities.java.i
 data/src/cs213/photoAlbum/view/View.java.i
@@ -96,38 +163,64 @@ data/docs/cs213/photoAlbum/control/AlbumEditorController.html.i
 data/docs/cs213/photoAlbum/view/package-frame.html.i
 data/src/cs213/photoAlbum/guiview/CollectionView.java.i
 data/src/cs213/photoAlbum/control/BackendController.java.i
+data/docs/tests.xls.i
 data/data/thumbnails/thumbnail+me.jpg.i
+data/docs/Java Docs CmdView/index-files/index-9.html.i
 data/docs/cs213/photoAlbum/view/package-summary.html.i
-data/bin/cs213/photoAlbum/model/Tag.class.orig.i
-data/bin/cs213/photoAlbum/control/BackendController.class.orig.i
+data/docs/Java Docs CmdView/index-files/index-5.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/Tag.html.i
+data/data/AppPhotos/forwardButton.png.i
 data/docs/index-files/index-1.html.i
+data/2015m4.jpg.i
+data/docs/JavaDocs GUI View /constant-values.html.i
+data/2015m4.jpg.d
+data/docs/JavaDocs GUI View /script.js.i
 data/src/cs213/photoAlbum/util/UserIcon.java.i
 data/docs/cs213/photoAlbum/control/class-use/AlbumEditorController.html.i
 data/data/AppPhotos/EditButton.png.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/simpleview/class-use/CmdView.html.i
+data/data/thumbnails/thumbnail+p1.jpg.i
 data/docs/package-list.i
+data/src/cs213/photoAlbum/util/MenuButtonsContainer.java.i
+data/docs/Java Docs CmdView/index-files/index-2.html.i
 data/users.dat.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/package-summary.html.i
+data/docs/JavaDocs GUI View /index-files/index-2.html.i
 data/src/cs213/photoAlbum/Controller/UserEditorController.java.i
 data/.classpath.i
 data/docs/cs213/photoAlbum/view/class-use/View.html.i
 data/docs/cs213/photoAlbum/view/View.html.i
 data/docs/index-files/index-12.html.i
-data/data/AppPhotos/addButtonDisabled.png.i
-data/AppPhotos/Something.png.d
-data/AppPhotos/Something.png.i
-data/docs/index-files/index-9.html.i
-data/Readme.i
+data/docs/JavaDocs GUI View /allclasses-frame.html.i
+data/docs/Java Docs CmdView/allclasses-noframe.html.i
 data/src/cs213/photoAlbum/util/HintTextField.java.i
+data/docs/JavaDocs GUI View /help-doc.html.i
+data/data/AppPhotos/addButtonDisabled.png.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/view/View.html.i
+data/docs/JavaDocs GUI View /index-files/index-4.html.i
+data/AppPhotos/Something.png.i
+data/docs/JavaDocs GUI View /cs213/photoAlbum/guiview/package-use.html.i
+data/docs/index-files/index-9.html.i
+data/docs/Java Docs CmdView/index-files/index-12.html.i
+data/Readme.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/class-use/Album.html.i
 data/settings.png.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/control/class-use/UserEditorController.html.i
+data/data/thumbnails/thumbnail+kingda.jpg.i
 data/docs/cs213/photoAlbum/control/UserEditorController.html.i
 data/docs/cs213/photoAlbum/model/package-use.html.i
 data/src/cs213/photoAlbum/guiview/GuiView.java.i
-data/docs/index-files/index-10.html.i
+data/1m.png.i
 data/bin/cs213/photoAlbum/model/User.class.orig.i
-data/bin/cs213/photoAlbum/Controller/PhotoEditorController.class.i
+data/bin/cs213/photoAlbum/guiview/GuiView$21.class.i
+data/docs/UML.pdf.i
 data/docs/cs213/photoAlbum/model/User.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/Album.html.i
+data/docs/JavaDocs GUI View /allclasses-noframe.html.i
 data/.project.i
 data/docs/deprecated-list.html.i
 data/docs/cs213/photoAlbum/control/package-frame.html.i
+data/docs/FinalUML.ucls.i
 data/docs/index-files/index-8.html.i
 data/docs/index-files/index-5.html.i
 data/docs/index-files/index-4.html.i
@@ -135,32 +228,50 @@ data/src/cs213/photoAlbum/util/PhotoViewer.java.i
 data/data/AppPhotos/searchButton.png.i
 data/data/AppPhotos/arrowLeft.png.i
 data/docs/script.js.i
-data/docs/cs213/photoAlbum/control/class-use/UserEditorController.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/package-frame.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/class-use/User.html.i
+data/kingda.jpg.i
+data/docs/Java Docs CmdView/script.js.i
 data/data/thumbnails/thumbnail+335.jpg.i
 data/data/AppPhotos/deleteButtonDisabled.png.i
+data/m4.jpg.i
+data/docs/Java Docs CmdView/index-files/index-6.html.i
 data/docs/cs213/photoAlbum/model/Tag.html.i
 data/bin/cs213/photoAlbum/Controller/AlbumEditorController.class.i
 data/docs/stylesheet.css.i
+data/data/thumbnails/thumbnail+medusa.jpg.i
+data/docs/Java Docs CmdView/index-files/index-11.html.i
+data/docs/JavaDocs GUI View /deprecated-list.html.i
 data/docs/index-files/index-7.html.i
-data/data/AppPhotos/addButton.png.i
+data/docs/index-files/index-10.html.i
+data/p1.jpg.i
+data/docs/Java Docs CmdView/index-files/index-10.html.i
 data/bin/cs213/photoAlbum/model/Photo.class.orig.i
 data/docs/overview-frame.html.i
 data/src/cs213/photoAlbum/util/CollectionListener.java.i
+data/docs/Java Docs CmdView/help-doc.html.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/view/package-use.html.i
+data/bin/cs213/photoAlbum/model/Tag.class.orig.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/Photo.html.i
 data/docs/cs213/photoAlbum/control/package-use.html.i
-data/data/AppPhotos/thumbSmall.png.i
-data/data/AppPhotos/makeAlbumButton.png.i
 data/src/cs213/photoAlbum/simpleview/CmdView.java.i
-data/src/cs213/photoAlbum/util/MenuButtonsContainer.java.i
-data/data/AppPhotos/forwardButton.png.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/package-tree.html.i
+data/.hgignore.i
 data/docs/constant-values.html.i
 data/src/cs213/photoAlbum/util/CustomPanel.java.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/model/package-use.html.i
 data/docs/cs213/photoAlbum/model/class-use/Album.html.i
-data/bin/cs213/photoAlbum/view/View.class.i
-data/bin/cs213/photoAlbum/model/Saving.class.i
+data/docs/Java Docs CmdView/cs213/photoAlbum/control/PhotoEditorController.html.i
+data/docs/Java Docs CmdView/package-list.i
+data/1m.png.d
 data/bin/cs213/photoAlbum/simpleview/CmdView.class.orig.i
 data/docs/overview-tree.html.i
+data/bin/cs213/photoAlbum/guiview/GuiView$19.class.i
+data/docs/UML.png.d
+data/docs/Java Docs CmdView/cs213/photoAlbum/control/package-frame.html.i
 data/src/cs213/photoAlbum/model/Saving.java.i
-data/docs/cs213/photoAlbum/view/package-use.html.i
-data/docs/cs213/photoAlbum/model/Photo.html.i
+data/docs/UML.png.i
+data/veneno.jpg.i
 data/data/AppPhotos/blankAlbum.png.i
+data/docs/UML.pdf.d
 data/docs/cs213/photoAlbum/control/package-tree.html.i

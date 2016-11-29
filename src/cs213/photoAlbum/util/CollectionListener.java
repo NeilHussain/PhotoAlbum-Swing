@@ -16,10 +16,22 @@ public class CollectionListener extends Observable implements MouseListener,
 	Thumbnail selected;
 	int selectedIndex = 0;
 
+	/**
+	 * Make a new collection listener
+	 * 
+	 * @param collection
+	 *            to listen to
+	 */
 	public CollectionListener(CollectionView collection) {
 		this.collection = collection;
 	}
 
+	/**
+	 * Capture mouse pressed events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse pressed event variables
+	 */
 	public void mousePressed(MouseEvent e) {
 		// capture starting point
 		int mouseX = e.getX();
@@ -52,6 +64,12 @@ public class CollectionListener extends Observable implements MouseListener,
 
 	}
 
+	/**
+	 * Capture mouse dragged events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse dragged event variables
+	 */
 	public void mouseDragged(MouseEvent e) {
 
 		int mouseX = e.getX();
@@ -97,6 +115,12 @@ public class CollectionListener extends Observable implements MouseListener,
 		}
 	}
 
+	/**
+	 * Capture mouse clicked events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse clicked event variables
+	 */
 	public void mouseClicked(MouseEvent e) {
 		// System.out.println(this.countObservers());
 
@@ -125,15 +149,39 @@ public class CollectionListener extends Observable implements MouseListener,
 
 	}
 
+	/**
+	 * Capture mouse entered events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse entered event variables
+	 */
 	public void mouseEntered(MouseEvent e) {
 	}
 
+	/**
+	 * Capture mouse exited events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse exited event variables
+	 */
 	public void mouseExited(MouseEvent e) {
 	}
 
+	/**
+	 * Capture mouse moved events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse moved event variables
+	 */
 	public void mouseMoved(MouseEvent e) {
 	}
 
+	/**
+	 * Capture mouse released events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse released event variables
+	 */
 	public void mouseReleased(MouseEvent e) {
 		// collection.selectionRect = null;
 		// System.out.println("Huh");
@@ -143,13 +191,19 @@ public class CollectionListener extends Observable implements MouseListener,
 			collection.setSelected(selected);
 			collection.setSelection(selectedIndex);
 			setChanged();
-			
-			//System.out.println(collection.getSelection());
+
+			// System.out.println(collection.getSelection());
 			notifyObservers(false);
 
 		}
 	}
 
+	/**
+	 * Capture mouse wheel events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse wheel event variables
+	 */
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		if (e.getScrollType() == MouseWheelEvent.WHEEL_UNIT_SCROLL) {
@@ -199,6 +253,20 @@ class Thumbnail {
 	BufferedImage image;
 	boolean dummy = false;
 
+	/**
+	 * Create a thumbnail container
+	 * 
+	 * @param image
+	 *            of the thumbnail
+	 * @param x
+	 *            position of the thumbnail
+	 * @param y
+	 *            position of the thumbnail
+	 * @param width
+	 *            of the thumbnail
+	 * @param height
+	 *            of the thumbnail
+	 */
 	Thumbnail(BufferedImage image, int x, int y, int width, int height) {
 
 		this.image = image;
@@ -222,35 +290,80 @@ class Thumbnail {
 
 	}
 
+	/**
+	 * Get the thumbnail image
+	 * 
+	 * @return BufferedImage that the thumbnail displays
+	 */
 	public BufferedImage getImage() {
 		return this.image;
 	}
 
+	/**
+	 * Flag to disregard in selection checks
+	 * 
+	 * @return true to disregard, false otherwise
+	 */
 	public boolean isDummy() {
 		return this.dummy;
 	}
 
+	/**
+	 * Disregard this thumbnail
+	 * 
+	 * @param boolean
+	 */
 	public void setDummy(Boolean dummy) {
 		this.dummy = dummy;
 
 	}
 
+	/**
+	 * Get the x position of the thumbnail
+	 * 
+	 * @return int of the x position
+	 */
 	public int getX() {
 		return x;
 	}
 
+	/**
+	 * Set the x position of the thumbnail
+	 * 
+	 * @param position
+	 *            to set the thumbnail to
+	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 
+	/**
+	 * Get the Y position of the thumbnail
+	 * 
+	 * @return int of the y position of the thumbnail
+	 */
 	public int getY() {
 		return y;
 	}
 
+	/**
+	 * Set the y position of the thumbnail
+	 * 
+	 * @param y
+	 *            to set the thumbnail's position to
+	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 
+	/**
+	 * Set the bounds of the thumbnail
+	 * 
+	 * @param x
+	 * @param y
+	 * @param w
+	 * @param h
+	 */
 	public void setBounds(int x, int y, int w, int h) {
 		this.x = x;
 		this.y = y;
@@ -259,6 +372,11 @@ class Thumbnail {
 
 	}
 
+	/**
+	 * Get the bounds of the thumbnail
+	 * 
+	 * @return bounding rectangle
+	 */
 	public Rectangle getBounds() {
 
 		return new Rectangle(x, y, width, height);

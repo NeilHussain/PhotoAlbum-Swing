@@ -111,7 +111,7 @@ public class AlbumEditorController {
 
 			photo.removeAlbum(model);
 			if (photo.getAlbums().length == 0) {
-				System.out.println(photo.getAlbums().length);
+				// System.out.println(photo.getAlbums().length);
 				userModel.removePhoto(photo);
 			}
 			//
@@ -378,36 +378,76 @@ public class AlbumEditorController {
 		return thumbFiles.toArray(new File[thumbFiles.size()]);
 	}
 
+	/**
+	 * Get the photo at the given array index
+	 * 
+	 * @param index
+	 *            of photo to get
+	 * @return Photo object at the index
+	 */
 	public Photo getPhotoByIndex(int index) {
 
 		return model.getPhotos()[index];
 
 	}
 
+	/**
+	 * Get the caption of the album
+	 * 
+	 * @return String of the caption text
+	 */
 	public String getCaption() {
 
 		return model.getCaption();
 	}
 
+	/**
+	 * Set the caption of the album
+	 * 
+	 * @param String
+	 *            to set the album's caption to
+	 */
 	public void setCaption(String caption) {
 
 		model.setCaption(caption);
 	}
 
+	/**
+	 * Get the newest photo entered into the album
+	 * 
+	 * @return String of the date of the newest photo
+	 */
 	public String getLatest() {
-		
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(model.getLatest());
-		
-		return calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DATE) + "/" + calendar.get(Calendar.YEAR);
 
+		Calendar calendar = Calendar.getInstance();
+		if (model.getLatest() != null) {
+			calendar.setTime(model.getLatest());
+
+			return calendar.get(Calendar.MONTH) + "/"
+					+ calendar.get(Calendar.DATE) + "/"
+					+ calendar.get(Calendar.YEAR);
+		} else {
+			return null;
+		}
 	}
-	
+
+	/**
+	 * Get the oldest photo entered into the album
+	 * 
+	 * @return String of the date of the oldest photo
+	 */
 	public String getEarliest() {
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(model.getEarliest());
-		
-		return calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DATE) + "/" + calendar.get(Calendar.YEAR);
+		if (model.getEarliest() != null) {
+			calendar.setTime(model.getEarliest());
+
+			return calendar.get(Calendar.MONTH) + "/"
+					+ calendar.get(Calendar.DATE) + "/"
+					+ calendar.get(Calendar.YEAR);
+		} else {
+
+			return null;
+		}
 	}
 
 }

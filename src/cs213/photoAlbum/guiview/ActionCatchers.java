@@ -1,7 +1,6 @@
 package cs213.photoAlbum.guiview;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FileDialog;
 import java.awt.Font;
@@ -45,8 +44,20 @@ public class ActionCatchers {
 
 	static JTextArea chosenFile;
 
+	/**
+	 * Pops up a add photo window
+	 * 
+	 * @param optional
+	 *            album name of the new photo
+	 */
 	// ################### Add Photo ##########################//
 	public static void addPhoto(String aName) {
+
+		if (GuiView.user.getAlbumNames().length == 0) {
+			// Add album first
+			addAlbum();
+			return;
+		}
 
 		GuiView.glass.setVisible(true);
 
@@ -117,7 +128,7 @@ public class ActionCatchers {
 
 			GuiView.aList = new JList<String>(GuiView.user.getAlbumNames());
 			GuiView.aList.setSelectedIndex(0);
-			System.out.println(GuiView.aList.getSelectedValue());
+			// System.out.println(GuiView.aList.getSelectedValue());
 
 		} else {
 
@@ -176,8 +187,9 @@ public class ActionCatchers {
 				fd.setVisible(true);
 				String filePath = fd.getDirectory();
 				String fileName = fd.getFile();
-				System.out.println("path: " + filePath + "\nname: " + fileName
-						+ "\n");
+				// System.out.println("path: " + filePath + "\nname: " +
+				// fileName
+				// + "\n");
 				if (filePath == null || fileName == null) {
 					confirm.setEnabled(false);
 					chosenFile.setText("No file selected.");
@@ -233,8 +245,8 @@ public class ActionCatchers {
 					 */
 
 					if (GuiView.albumName == null) {
-						System.out.println("\""
-								+ GuiView.aList.getSelectedValue() + "\"");
+						// System.out.println("\""
+						// + GuiView.aList.getSelectedValue() + "\"");
 						GuiView.albumName = GuiView.aList.getSelectedValue()
 								.toString();
 						GuiView.album = GuiView.user
@@ -269,14 +281,15 @@ public class ActionCatchers {
 
 						if (error == 0) {
 
-							System.out.println("File " + GuiView.file
-									+ " does not exist");
+							// System.out.println("File " + GuiView.file
+							// + " does not exist");
 
 						} else if (error == -1) {
 
-							System.out.println("Photo " + GuiView.file
-									+ " already exists in album "
-									+ GuiView.albumName);
+							/*
+							 * System.out.println("Photo " + GuiView.file +
+							 * " already exists in album " + GuiView.albumName);
+							 */
 
 						} else if (error == 1) {
 
@@ -284,9 +297,11 @@ public class ActionCatchers {
 
 							GuiView.refreshPhotoCollections();
 
-							System.out.println("Added photo " + GuiView.file
-									+ ":\n" + caption.getText() + " - Album: "
-									+ GuiView.albumName);
+							/*
+							 * System.out.println("Added photo " + GuiView.file
+							 * + ":\n" + caption.getText() + " - Album: " +
+							 * GuiView.albumName);
+							 */
 
 							GuiView.albumName = "";
 							GuiView.directoryPath = "";
@@ -304,8 +319,8 @@ public class ActionCatchers {
 						// albumTF.setText("");
 						GuiView.albumName = "";
 
-						System.out.println("Album " + GuiView.albumName
-								+ " does not exist");
+						// System.out.println("Album " + GuiView.albumName
+						// + " does not exist");
 
 					}
 				}
@@ -321,6 +336,9 @@ public class ActionCatchers {
 	}
 
 	// ################### Add Album ##########################//
+	/**
+	 * Pops up an add album window
+	 */
 	static void addAlbum() {
 		GuiView.glass.setVisible(true);
 
@@ -395,7 +413,7 @@ public class ActionCatchers {
 
 		confirm.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent me) {
-				System.out.println("adding");
+				// System.out.println("adding");
 				if (!name.getText().equals("")) {
 
 					if (GuiView.user.addUserAlbum(name.getText().trim())) {
@@ -409,7 +427,7 @@ public class ActionCatchers {
 
 						if (GuiView.searching == true) {
 
-							System.out.println("Have to make an album here");
+							// System.out.println("Have to make an album here");
 							GuiView.album = new AlbumEditorController(
 									GuiView.user
 											.getAlbum(name.getText().trim()),
@@ -457,7 +475,7 @@ public class ActionCatchers {
 
 	// ################### Add Button Clicked ##########################//
 	protected static void addClicked() {
-		System.out.println("Add clicked");
+		// System.out.println("Add clicked");
 		// Which tab is selected on top: photos(0), albums(0), years(0)
 		switch (GuiView.menu.whichTabbed()) {
 
@@ -632,7 +650,7 @@ public class ActionCatchers {
 				// search per album
 				//
 				//
-				System.out.println(GuiView.singleAlbum);
+				// System.out.println(GuiView.singleAlbum);
 
 				String tags[] = GuiView.search.getText().split(", ");
 
@@ -797,6 +815,13 @@ public class ActionCatchers {
 		//
 		//
 
+		if (stringUser.equalsIgnoreCase("admin")) {
+			GuiView.mainCardLayout.show(GuiView.mainCardPanel, "admin");
+			GuiView.admin_window.setVisible(true);
+			GuiView.login_window.setVisible(false);
+			return true;
+		}
+
 		User logged = GuiView.backend.loginUser(stringUser);
 
 		if (logged != null) {
@@ -814,10 +839,9 @@ public class ActionCatchers {
 
 			return true;
 
-		} else {
-
-			return false;
 		}
+
+		return false;
 
 	}
 
@@ -864,6 +888,7 @@ public class ActionCatchers {
 						.getScale() * 100));
 				GuiView.albumPhotosPanel.removeAll();
 				GuiView.albumPhotosPanel.add(GuiView.albumsCollection);
+				GuiView.albumEditButton.setVisible(true);
 
 				GuiView.albumPhotosPanel.repaint();
 			}
@@ -889,7 +914,7 @@ public class ActionCatchers {
 		GuiView.searchCaptionLabel.setText("");
 		GuiView.searchTagsLabel.setText("");
 		GuiView.searchDateLabel.setText("");
-		
+
 		((HintTextField) GuiView.search).focusLost(null);
 
 		switch (GuiView.menu.whichTabbed()) {
@@ -921,8 +946,8 @@ public class ActionCatchers {
 
 	// ################### Photo Double Clicked ##########################//
 	protected static void photoDoubleClicked() {
-		System.out.println("Photo double clicked: "
-				+ GuiView.menu.whichTabbed());
+		// System.out.println("Photo double clicked: "
+		// + GuiView.menu.whichTabbed());
 
 		// Which tab is selected on top
 		if (GuiView.searching == true) {
@@ -947,6 +972,7 @@ public class ActionCatchers {
 							.setValue((int) (GuiView.singleAlbumCollection
 									.getScale() * 100));
 					GuiView.search.setText("search " + GuiView.album.getName());
+					GuiView.albumEditButton.setVisible(false);
 				} else {
 
 					GuiView.createPhotoViewer(GuiView.album.getAllPhotoPaths(),
@@ -975,7 +1001,7 @@ public class ActionCatchers {
 	// ################### Photo Single Clicked ##########################//
 	protected static void photoSingleClicked() {
 
-		System.out.println("Photo clicked");
+		// System.out.println("Photo clicked");
 
 		// Which tab is selected on top: photos(0), albums(0), years(0)
 		if (GuiView.searching == true) {
@@ -1069,7 +1095,8 @@ public class ActionCatchers {
 							+ GuiView.album.getAlbumSize());
 
 					GuiView.albumDatesLabel.setText(GuiView.dateLabelConstant
-							+ GuiView.album.getEarliest() + " - " + GuiView.album.getLatest());
+							+ GuiView.album.getEarliest() + " - "
+							+ GuiView.album.getLatest());
 					// albumEditButton.setText("edit");
 
 					GuiView.albumNameLabel.setVisible(true);
@@ -1109,7 +1136,7 @@ public class ActionCatchers {
 
 	// ################### Delete Clicked ##########################//
 	protected static void deleteClicked() {
-		System.out.println("Delete clicked");
+		// System.out.println("Delete clicked");
 		// Which tab is selected on top: photos(0), albums(0), years(0)
 		switch (GuiView.menu.whichTabbed()) {
 
@@ -1194,6 +1221,8 @@ public class ActionCatchers {
 
 		cancel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent me) {
+				GuiView.delete_album_window.dispose();
+				GuiView.glass.setVisible(false);
 
 			}
 		});
@@ -1340,6 +1369,9 @@ public class ActionCatchers {
 	}
 
 	// ################### Edit Clicked ##########################//
+	/**
+	 * Pops up an edit photo window
+	 */
 	public static void editPhotoClicked() {
 		GuiView.glass.setVisible(true);
 
@@ -1446,10 +1478,10 @@ public class ActionCatchers {
 
 			GuiView.tagsListModel.addElement(tag);
 		}
-		JList list = new JList(GuiView.tagsListModel);
+		JList<String> list = new JList<String>(GuiView.tagsListModel);
 
 		list.setSelectedIndex(0);
-		System.out.println(list.getSelectedValue());
+		// System.out.println(list.getSelectedValue());
 		GuiView.edit_photo_window.add(new JScrollPane(list));
 
 		// GuiView.edit_photo_window.add(Box.createVerticalStrut(20));
@@ -1478,8 +1510,8 @@ public class ActionCatchers {
 					int error = GuiView.photo.removeTag(GuiView.tagsListModel
 							.elementAt(list.getSelectedIndex()));
 
-					System.out.println(GuiView.tagsListModel.elementAt(list
-							.getSelectedIndex()));
+					// System.out.println(GuiView.tagsListModel.elementAt(list
+					// .getSelectedIndex()));
 					if (error > 0) {
 						// worked
 						GuiView.tagsListModel.remove(list.getSelectedIndex());
@@ -1487,7 +1519,7 @@ public class ActionCatchers {
 					} else {
 						// failed
 
-						System.out.println("failed!");
+						// System.out.println("failed!");
 
 					}
 				}
@@ -1509,7 +1541,8 @@ public class ActionCatchers {
 						GuiView.goodInput(tags);
 					}
 
-					System.out.println("Tags: " + GuiView.photo.getTagsString());
+					// System.out.println("Tags: " +
+					// GuiView.photo.getTagsString());
 
 				} else {
 
@@ -1628,6 +1661,9 @@ public class ActionCatchers {
 
 	}
 
+	/**
+	 * Pops up an edit album window
+	 */
 	public static void editAlbumClicked() {
 
 		if (GuiView.singleAlbum) {
@@ -1753,6 +1789,9 @@ public class ActionCatchers {
 
 	}
 
+	/**
+	 * Pops up a make album window
+	 */
 	public static void makeAlbumButtonClicked() {
 		// when searching, if clicked it creates on album with the search
 		// results

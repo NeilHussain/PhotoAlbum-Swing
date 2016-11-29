@@ -65,6 +65,18 @@ public class PhotoViewer extends JComponent implements MouseListener,
 
 	Font defaultFont = new Font("Ariel", Font.PLAIN, 14);
 
+	/**
+	 * Create a PhotoViewer overlay
+	 * 
+	 * @param filepaths
+	 *            , File[] containing all of the photos for the slideshow
+	 * @param index
+	 *            , int starting index
+	 * @param width
+	 *            , int width of the component
+	 * @param height
+	 *            , int height of the component
+	 */
 	public PhotoViewer(File[] filepaths, int index, int width, int height) {
 
 		this.index = index;
@@ -81,8 +93,10 @@ public class PhotoViewer extends JComponent implements MouseListener,
 		setDoubleBuffered(true);
 
 		try {
-			leftArrow = ImageIO.read(new File(containerFolder + "arrowLeft.png"));
-			rightArrow = ImageIO.read(new File(containerFolder + "arrowRight.png"));
+			leftArrow = ImageIO
+					.read(new File(containerFolder + "arrowLeft.png"));
+			rightArrow = ImageIO.read(new File(containerFolder
+					+ "arrowRight.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -94,6 +108,9 @@ public class PhotoViewer extends JComponent implements MouseListener,
 
 	}
 
+	/**
+	 * Paints the photoviewer component
+	 */
 	@Override
 	public void paint(Graphics g) {
 
@@ -205,10 +222,16 @@ public class PhotoViewer extends JComponent implements MouseListener,
 				this.getHeight() - 10);
 	}
 
+	/**
+	 * Capture mouse clicked events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse clicked event variables
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("hey");
+		// System.out.println("hey");
 
 		if (filepaths.length > 1) {
 			if (e.getX() > width / 2) {
@@ -236,24 +259,48 @@ public class PhotoViewer extends JComponent implements MouseListener,
 		}
 	}
 
+	/**
+	 * Capture mouse pressed events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse pressed event variables
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Capture mouse release events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse released event variables
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		drawX = true;
-		System.out.println("Mouse entered");
+		// System.out.println("Mouse entered");
 	}
 
+	/**
+	 * Capture mouse entered events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse entered event variables
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 
 	}
 
+	/**
+	 * Capture mouse exited events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse exited event variables
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -262,16 +309,33 @@ public class PhotoViewer extends JComponent implements MouseListener,
 
 	}
 
+	/**
+	 * Get the preferred size of the PhotoViewer
+	 * 
+	 * @return Dimension object containing width and height
+	 */
 	public Dimension getPreferredSize() {
 		return new Dimension(width, height);
 	}
 
+	/**
+	 * Capture mouse dragged events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse dragged event variables
+	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Capture mouse moved events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse moved event variables
+	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
 
@@ -279,14 +343,14 @@ public class PhotoViewer extends JComponent implements MouseListener,
 			if (e.getX() > width / 2) {
 				if (switchArrow != 1) {
 					switchArrow = 1;
-					System.out.println("MouseMoved Right");
+					// System.out.println("MouseMoved Right");
 					repaint();
 				}
 
 			} else {
 				if (switchArrow != 0) {
 					switchArrow = 0;
-					System.out.println("MouseMoved Left");
+					// System.out.println("MouseMoved Left");
 
 					repaint();
 				}
@@ -294,6 +358,12 @@ public class PhotoViewer extends JComponent implements MouseListener,
 		}
 	}
 
+	/**
+	 * Capture mouse scroll wheel events on the PhotoViewer
+	 * 
+	 * @param MouseEvent
+	 *            e containing the mouse scroll wheel event variables
+	 */
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
 

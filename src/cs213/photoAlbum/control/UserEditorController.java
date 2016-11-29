@@ -934,11 +934,28 @@ public class UserEditorController {
 		return thumbFiles.toArray(new File[thumbFiles.size()]);
 	}
 
+	/**
+	 * Get the number of photos a user has
+	 * 
+	 * @return int number of photos
+	 */
 	public int numPhotos() {
 
 		return getAllPhotos().length;
 	}
 
+	/**
+	 * Get all the thumbnails of the albums that the user ahs
+	 * 
+	 * @param density
+	 *            to display thumbnails
+	 * @param width
+	 *            of the thumbnail
+	 * @param height
+	 *            of the thumbnail
+	 * @return BufferedImage[] of the album thumbnails
+	 * @throws IOException
+	 */
 	public BufferedImage[] getAlbumThumbnails(int density, int width, int height)
 			throws IOException {
 
@@ -970,18 +987,37 @@ public class UserEditorController {
 		return photoIcons;
 	}
 
+	/**
+	 * Get the photo at the provided index
+	 * 
+	 * @param index
+	 *            of photo to get
+	 * @return Photo object at the index
+	 */
 	public Photo getPhotoByIndex(int index) {
 
 		return model.getAllPhotos()[index];
 
 	}
 
+	/**
+	 * Get the album at the provided index
+	 * 
+	 * @param index
+	 *            of album to get
+	 * @return Album object at the index
+	 */
 	public Album getAlbumByIndex(int index) {
 
 		return model.getAlbums()[index];
 
 	}
 
+	/**
+	 * Get the file paths of all the user's photos
+	 * 
+	 * @return File[] of all paths
+	 */
 	public File[] getAllPhotoPaths() {
 
 		Photo[] photos = getAllPhotos();
@@ -1015,6 +1051,13 @@ public class UserEditorController {
 		return yearsArray;
 	}
 
+	/**
+	 * Remove the provided photo
+	 * 
+	 * @param photo
+	 *            to remove
+	 * @return true if removed, false otherwise
+	 */
 	public boolean removePhoto(Photo photo) {
 
 		for (Album album : photo.getAlbums()) {
@@ -1023,5 +1066,5 @@ public class UserEditorController {
 		}
 		return model.removePhoto(photo);
 	}
-	
+
 }

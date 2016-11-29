@@ -67,31 +67,68 @@ public class CmdView implements View {
 				}
 				break;
 			case ("build"):
-				newUser("test", "poop");
+				newUser("Matt", "Matt");
+				login("Matt");
+				createAlbum("Six Flags");
+				addPhoto("kingda.jpg", "Kingda Ka", "Six Flags");
+				addPhoto("medusa.jpg", "Medusa", "Six Flags");
 
-				login("test");
+				addTag("kingda.jpg", "type:coaster");
+				addTag("medusa.jpg", "type:coaster");
+				createAlbum("Disney");
+				logout();
 
-				createAlbum("a1");
+				newUser("Neil", "Neil");
+
+				login("Neil");
+
+				createAlbum("bmw");
 
 				pl("");
 
-				addPhoto("1m.png", "1M Pic", "a1");
+				addPhoto("1m.png", "1M Pic", "bmw");
 
 				pl("");
 
-				addPhoto("335.jpg", "335 Pic", "a1");
+				addPhoto("335.jpg", "335 Pic", "bmw");
 				pl("");
-				createAlbum("tester");
+				addPhoto("m4.jpg", "Bmw M4", "bmw");
 				pl("");
-				addPhoto("settings.png", "test this stuff", "tester");
+				createAlbum("Porsche");
+				addPhoto("918.jpg", "918 Super Car", "Porsche");
 				pl("");
-				addPhoto("lambo.jpg", "lambo!", "a1");
+				addPhoto("2015m4.jpg", "New M4 concept!", "bmw");
+				pl("");
+				createAlbum("McLaren");
+				pl("");
+				addPhoto("p1.jpg", "Beautiful P1!", "McLaren");
+				pl("");
+				createAlbum("Lamborghini");
+				pl("");
+				addPhoto("lambo.jpg", "White lambo", "Lamborghini");
 				pl("");
 				addTag("lambo.jpg", "pic:car");
+				addTag("335.jpg", "pic:car");
+				addTag("1m.png", "pic:car");
+				addTag("m4.jpg", "pic:car");
+				addTag("2015m4.jpg", "pic:car");
+				addTag("p1.jpg", "pic:car");
+				addPhoto("veneno.jpg", "Red lambo Veneno", "Lamborghini");
+
+				addTag("veneno.jpg", "pic:car");
+				addTag("918.jpg", "pic:car");
+				addTag("918.jpg", "car:grey");
+				addTag("918.jpg", "type:supercar");
+				addTag("p1.jpg", "type:supercar");
+				addTag("veneno.jpg", "type:supercar");
+
 				pl("");
-				addTag("settings.png", "pic:graphic");
+
+				addTag("335.jpg", "car:red");
+				addTag("veneno.jpg", "car:red");
+				addTag("p1.jpg", "car:orange");
 				pl("");
-				addTag("settings.png", "pic:gray");
+				addTag("car:grey", "pic:gray");
 				pl("");
 				addTag("335.jpg", "car:red");
 				pl("");
@@ -683,7 +720,7 @@ public class CmdView implements View {
 		// Save users and stuff
 
 		backend.save();
-		System.exit(1);
+		// System.exit(1);
 
 	}
 

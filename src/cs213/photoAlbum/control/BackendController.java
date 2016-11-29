@@ -10,11 +10,18 @@ public class BackendController {
 
 	private View view;
 
+	/**
+	 * Create a backend
+	 */
 	public BackendController() {
 		User.load();
 		// User.loadUsers();
 	}
 
+	/**
+	 * Get the users of the program
+	 * @return String of all the users
+	 */
 	public String getUsers() {
 
 		String userList = "";
@@ -41,6 +48,12 @@ public class BackendController {
 
 	}
 
+	/**
+	 * Add a user to the program
+	 * @param userID to add
+	 * @param userName to add
+	 * @return true if add, false otherwise
+	 */
 	public boolean addUser(String userID, String userName) {
 
 		// do error checking on the user that should be added
@@ -61,6 +74,11 @@ public class BackendController {
 
 	}
 
+	/**
+	 * Log a user in
+	 * @param userID to log in
+	 * @return true if logged in, false otherwise
+	 */
 	public User loginUser(String userID) {
 
 		if (userID.charAt(0) == '"' && userID.charAt(userID.length()) == '"') {
@@ -81,6 +99,10 @@ public class BackendController {
 
 	}
 
+	/**
+	 * Save the user data
+	 * @return true if saved, false otherwise
+	 */
 	public boolean save() {
 		// save the users to a file some that they can be loaded again.
 		// Do we have to save the albums/photos too? Or will they be saved
@@ -91,6 +113,11 @@ public class BackendController {
 		return false;
 	}
 
+	/**
+	 * Delete a user
+	 * @param user to delete
+	 * @return true if deleted, false otherwise
+	 */
 	public boolean deleteUser(String user) {
 
 		if (getUsers().contains(user)) {
@@ -103,10 +130,18 @@ public class BackendController {
 		}
 	}
 
+	/**
+	 * Get the view associated with this controller
+	 * @return View object 
+	 */
 	public View getView() {
 		return view;
 	}
 
+	/**
+	 * Set the view associated with this controller
+	 * @param View object 
+	 */
 	public void setView(View view) {
 		this.view = view;
 	}

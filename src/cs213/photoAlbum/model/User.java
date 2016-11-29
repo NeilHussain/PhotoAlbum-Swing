@@ -13,8 +13,9 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-@SuppressWarnings("serial")
 public class User implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private static ArrayList<User> users = new ArrayList<User>(10);
 
@@ -159,7 +160,7 @@ public class User implements Serializable {
 				for (Album album : albums) {
 
 					if (album.getName().equals(photoToAdd.getAlbums()[0])) {
-						System.out.println("here");
+						//System.out.println("here");
 						album.addPhoto(photo);
 					}
 
@@ -200,6 +201,10 @@ public class User implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Save a user
+	 * @return boolean if saved, false otherwise
+	 */
 	public static boolean save() {
 		FileOutputStream fout;
 		ObjectOutputStream oos;
@@ -214,6 +219,10 @@ public class User implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Load a user
+	 * @return true if loaded, false otherwise
+	 */
 	@SuppressWarnings({ "resource", "unchecked" })
 	public static boolean load() {
 		FileInputStream fin;
@@ -239,6 +248,17 @@ public class User implements Serializable {
 	 */
 	public static User[] getUsers() {
 		return users.toArray(new User[users.size()]);
+	}
+	
+	/**
+	 * 
+	 */
+	public static String[] getUserIDs() {
+		String[] ids = new String[users.size()];
+		for(int i = 0; i < ids.length; i++) {
+			ids[i] = users.get(i).userID;
+		}
+		return ids;
 	}
 
 	/**

@@ -77,6 +77,22 @@ public class CollectionView extends JComponent implements KeyListener {
 		this(thumbs, thumbWidth, thumbHeight, width, height, null);
 	}
 
+	/**
+	 * Make a collection view
+	 * 
+	 * @param thumbs
+	 *            , BufferedImage[] of the thumbnails to display
+	 * @param thumbWidth
+	 *            , width that the thumbnails should have
+	 * @param thumbHeight
+	 *            , height that the thumbanils should have
+	 * @param width
+	 *            of the full collection view
+	 * @param height
+	 *            of the displayable area of the collection view
+	 * @param years
+	 *            , optional array to pass in the years for the years collection
+	 */
 	public CollectionView(BufferedImage[] thumbs, int thumbWidth,
 			int thumbHeight, int width, int height, int[] years) {
 		addKeyListener(this);
@@ -224,27 +240,59 @@ public class CollectionView extends JComponent implements KeyListener {
 		}
 	}
 
+	/**
+	 * Get the length of the full collection view
+	 * 
+	 * @return
+	 */
 	public int getLineHeight() {
 
 		return this.lineHeight;
 	}
 
+	/**
+	 * Get the width of a thumbnail
+	 * 
+	 * @return int of the width of each thumbnail
+	 */
 	public int getThumbnailWidth() {
 		return thumbnailWidth;
 	}
 
+	/**
+	 * Set the width of the thumbnails
+	 * 
+	 * @param thumbnailWidth
+	 *            , int to set the width to
+	 */
 	public void setThumbnailWidth(int thumbnailWidth) {
 		this.thumbnailWidth = thumbnailWidth;
 	}
 
+	/**
+	 * Get the height of the thumbnails
+	 * 
+	 * @return int of the height of a thumbnail
+	 */
 	public int getThumbnailHeight() {
 		return thumbnailHeight;
 	}
 
+	/**
+	 * Set the height of each thumbnail
+	 * 
+	 * @param thumbnailHeight
+	 *            , int to set the thumbnail height to
+	 */
 	public void setThumbnailHeight(int thumbnailHeight) {
 		this.thumbnailHeight = thumbnailHeight;
 	}
 
+	/**
+	 * Get the index of the selected thumbnail
+	 * 
+	 * @return int of the index
+	 */
 	public int getSelection() {
 
 		if (years == null) {
@@ -262,78 +310,179 @@ public class CollectionView extends JComponent implements KeyListener {
 		}
 	}
 
+	/**
+	 * Set the selected thumbnail
+	 * 
+	 * @param Index
+	 *            of selection
+	 */
 	public void setSelection(int selection) {
 		this.selection = selection;
 	}
 
+	/**
+	 * Get the width of the collection view int of the width
+	 */
 	public int getWidth() {
 		return width;
 	}
 
+	/**
+	 * Set the width of the collection view
+	 * 
+	 * @param width
+	 *            to set to
+	 */
 	public void setWidth(int width) {
 		this.width = width;
 	}
 
+	/**
+	 * Get the length of the visible collection view
+	 * 
+	 * @param int of the length of the collection view
+	 */
 	public int getHeight() {
 		return height;
 	}
 
+	/**
+	 * Set the visible height of the collection view
+	 * 
+	 * @param height
+	 *            to set
+	 */
 	public void setHeight(int height) {
 		this.height = height;
 	}
 
+	/**
+	 * Get the scale of the collection thumbnails
+	 * 
+	 * @return double of the scale
+	 */
 	public double getScale() {
 		return scale;
 	}
 
+	/**
+	 * Get the spacing on the top
+	 * 
+	 * @return int, spacing on the top
+	 */
 	public int getyMargin() {
 		return yMargin;
 	}
 
+	/**
+	 * Set top spacing
+	 * 
+	 * @param yMargin
+	 *            , int spacing for the top
+	 */
 	public void setyMargin(int yMargin) {
 		this.yMargin = yMargin;
 	}
 
+	/**
+	 * Get the space between each thumbnail
+	 * 
+	 * @return int of the spacing between the thumbnail
+	 */
 	public int getSpacing() {
 		return spacing;
 	}
 
+	/**
+	 * Set the spacing between thumbnails
+	 * 
+	 * @param int space between
+	 */
 	public void setSpacing(int spacing) {
 		this.spacing = spacing;
 	}
 
+	/**
+	 * Get the scroll value of the Collection
+	 * 
+	 * @return double scroll value
+	 */
 	public double getScrollValue() {
 		return scrollValue;
 	}
 
+	/**
+	 * Change the Collection's scroll value
+	 * 
+	 * @param scrollValue
+	 *            to change to
+	 */
 	public void setScrollValue(double scrollValue) {
 		this.scrollValue = scrollValue;
 	}
 
+	/**
+	 * Get the collection's selection rectangle
+	 * 
+	 * @return Collection's selection rectangle
+	 */
 	public Rectangle getSelectionRect() {
 		return selectionRect;
 	}
 
+	/**
+	 * Change the Collection's selection rectangle
+	 * 
+	 * @param new selection rectangle
+	 */
 	public void setSelectionRect(Rectangle selectionRect) {
 		this.selectionRect = selectionRect;
 	}
 
+	/**
+	 * Get the collections thumbnails
+	 * 
+	 * @return Thumbnail[] of the collections thumbnails
+	 */
 	public Thumbnail[] getThumbnails() {
 		return thumbnails;
 	}
 
+	/**
+	 * Change the collections thumbnails
+	 * 
+	 * @param thumbnails
+	 *            to change to
+	 */
 	public void setThumbnails(Thumbnail[] thumbnails) {
 		this.thumbnails = thumbnails;
 	}
 
+	/**
+	 * Get the selected thumbnail
+	 * 
+	 * @return thumbnail that is selected
+	 */
 	public Thumbnail getSelected() {
 		return selected;
 	}
 
+	/**
+	 * Set the selected thumbnail
+	 * 
+	 * @param selected
+	 *            index of thumbnail to selected
+	 */
 	public void setSelected(Thumbnail selected) {
 		this.selected = selected;
 	}
 
+	/**
+	 * Set the scale of the collection view
+	 * 
+	 * @param scale
+	 *            to set the collection view to
+	 */
 	public void setScale(float scale) {
 
 		if (numThumbs > 0) {
@@ -475,10 +624,23 @@ public class CollectionView extends JComponent implements KeyListener {
 
 	}
 
+	/**
+	 * Get the preferred size of the PhotoViewer
+	 * 
+	 * @return Dimension object containing width and height
+	 */
 	public Dimension getPreferredSize() {
 		return new Dimension(width, height);
 	}
 
+	/**
+	 * Size the collection view
+	 * 
+	 * @param width
+	 *            to resize to
+	 * @param height
+	 *            to resize to
+	 */
 	public void resized(int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -571,14 +733,19 @@ public class CollectionView extends JComponent implements KeyListener {
 			// this.thumbnails = new Thumbnail[thumbs.length];
 		} else {
 
-			for (int i = 0; i < thumbnails.length; i++) {
-				thumbnails[i].setBounds(xMargin
-						+ ((i % perLine) * (thumbnailWidth + spacing)), yMargin
-						+ (int) (Math.floor((i / perLine) * 100) / 100)
-						* (thumbnailHeight + spacing), thumbnailWidth,
-						thumbnailHeight);
+			if (thumbnails != null) {
+				for (int i = 0; i < thumbnails.length; i++) {
+					thumbnails[i]
+							.setBounds(
+									xMargin
+											+ ((i % perLine) * (thumbnailWidth + spacing)),
+									yMargin
+											+ (int) (Math
+													.floor((i / perLine) * 100) / 100)
+											* (thumbnailHeight + spacing),
+									thumbnailWidth, thumbnailHeight);
+				}
 			}
-
 		}
 
 		if (selectionRect != null) {
@@ -609,6 +776,12 @@ public class CollectionView extends JComponent implements KeyListener {
 
 	}
 
+	/**
+	 * Add a thumbnail to the collection view
+	 * 
+	 * @param thumbnail
+	 *            to added
+	 */
 	public void addThumbnail(BufferedImage thumb) {
 
 		Thumbnail[] temp = new Thumbnail[this.thumbnails.length + 1];
@@ -622,6 +795,9 @@ public class CollectionView extends JComponent implements KeyListener {
 		// this.resize();
 	}
 
+	/**
+	 * Draws the collection view
+	 */
 	@Override
 	public void paint(Graphics g) {
 
@@ -692,14 +868,32 @@ public class CollectionView extends JComponent implements KeyListener {
 
 	}
 
+	/**
+	 * Get text of the tag
+	 * 
+	 * @return String of the tag text
+	 */
 	public String getTag() {
 		return tag;
 	}
 
-	public void setTag(String albumName) {
-		this.tag = albumName;
+	/**
+	 * Set the tag of the colleciton view
+	 * 
+	 * @param String
+	 *            tag to set
+	 */
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 
+	/**
+	 * Convert an int ArrayList to an int[]
+	 * 
+	 * @param integers
+	 *            in the arraylist as int[]
+	 * @return
+	 */
 	public static int[] convertIntegers(List<Integer> integers) {
 		int[] ret = new int[integers.size()];
 		for (int i = 0; i < ret.length; i++) {
@@ -708,35 +902,52 @@ public class CollectionView extends JComponent implements KeyListener {
 		return ret;
 	}
 
+	/**
+	 * Get the number of thumbnails
+	 * 
+	 * @return number of thumbnails in collection
+	 */
 	public int numThumbs() {
 
 		return this.thumbnails.length;
 	}
 
+	/**
+	 * Capture keys typed on the collection view
+	 * 
+	 * @param KeyEvent
+	 *            e
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("here!");
+		// System.out.println("here!");
 	}
 
+	/**
+	 * Capture key presses on the collection view
+	 * 
+	 * @param KeyEvent
+	 *            e
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
-System.out.println("here!");
-		
+		// System.out.println("here!");
+
 		int keyCode = e.getKeyCode();
 		switch (keyCode) {
 		case KeyEvent.VK_UP:
 			// handle up
-			setScrollValue(Math.max(0.0,
-					(Math.min((getLineHeight() - 
-							getHeight()), getScrollValue()
+			setScrollValue(Math.max(
+					0.0,
+					(Math.min((getLineHeight() - getHeight()), getScrollValue()
 							+ (1.3 * 10)))));
 			repaint();
 			break;
 		case KeyEvent.VK_DOWN:
-			setScrollValue(Math.max(0.0,
-					(Math.min((getLineHeight() - 
-							getHeight()), getScrollValue()
+			setScrollValue(Math.max(
+					0.0,
+					(Math.min((getLineHeight() - getHeight()), getScrollValue()
 							- (1.3 * 10)))));
 			repaint();
 			// handle down
@@ -751,10 +962,16 @@ System.out.println("here!");
 
 	}
 
+	/**
+	 * Capture key releases on the collection view
+	 * 
+	 * @param KeyEvent
+	 *            e
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("here!");
+		// System.out.println("here!");
 	}
 
 }

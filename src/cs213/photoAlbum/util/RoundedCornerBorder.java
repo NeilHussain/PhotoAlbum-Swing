@@ -21,12 +21,22 @@ public class RoundedCornerBorder extends AbstractBorder {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Create a Rounded Corner Border object
+	 * 
+	 * @param borderColor
+	 *            , color of the border
+	 */
 	public RoundedCornerBorder(Color borderColor) {
 		super();
 		this.borderColor = borderColor;
 
 	}
 
+	/**
+	 * Paints the border on the component using the parameters passed in
+	 * 
+	 */
 	@Override
 	public void paintBorder(Component c, Graphics g, int x, int y, int width,
 			int height) {
@@ -48,21 +58,43 @@ public class RoundedCornerBorder extends AbstractBorder {
 		g2.dispose();
 	}
 
+	/**
+	 * Get the insets of the border
+	 * 
+	 * @param componenet
+	 *            to get the borders from
+	 * @return Insets objects on the components
+	 */
 	@Override
 	public Insets getBorderInsets(Component c) {
 		return new Insets(4, 8, 4, 8);
 	}
 
+	/**
+	 * Get the insets of the border
+	 * 
+	 * @param componenet
+	 *            to get the borders from
+	 * @return Insets objects on the components
+	 */
 	@Override
 	public Insets getBorderInsets(Component c, Insets insets) {
 		insets.set(4, 8, 4, 8);
 		return insets;
 	}
 
+	/**
+	 * Get the color of the border
+	 * 
+	 * @return Color object of the border of the component
+	 */
 	public Color getBorderColor() {
 		return borderColor;
 	}
 
+	/**
+	 * Set the color of the border
+	 */
 	public void setBorderColor(Color borderColor) {
 		this.borderColor = borderColor;
 	}

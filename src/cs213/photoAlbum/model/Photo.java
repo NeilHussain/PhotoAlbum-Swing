@@ -354,7 +354,7 @@ public class Photo implements Serializable {
 
 			if (tags.get(i).equals(tag)) {
 
-				System.out.println("Perform remove");
+				//System.out.println("Perform remove");
 				return this.tags.remove(getTag(tag));
 
 			}
@@ -503,6 +503,10 @@ public class Photo implements Serializable {
 		return allAlbums.add(album);
 	}
 
+	/**
+	 * Get the photo's thumbnail
+	 * @return File object of the photo's thumbnail
+	 */
 	public File getThumbnail() {
 		try {
 			return thumbnailFile.getCanonicalFile();
@@ -514,6 +518,11 @@ public class Photo implements Serializable {
 
 	}
 
+	/**
+	 * Set the photos thumbnail
+	 * @param width of the new thumbnail
+	 * @param height of the new thumbnail
+	 */
 	public void setThumbnail(int width, int height) {
 
 		// System.out.println("Got here");
@@ -522,7 +531,7 @@ public class Photo implements Serializable {
 			File path = new File(containerFolder + "/thumbnail+"
 					+ this.filename.getName());
 			path = path.getCanonicalFile();
-			System.out.println(path.toString());
+			//System.out.println(path.toString());
 
 			BufferedImage photo = ImageIO.read(this.filename);
 			ImageUtilities.makePhotoThumbnail(photo, path, width, height);
@@ -535,10 +544,18 @@ public class Photo implements Serializable {
 		}
 	}
 
+	/**
+	 * Get the user's name for the photo
+	 * @return String, photo's name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Set the photo's name
+	 * @param String name to name the photo
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}

@@ -18,7 +18,6 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -32,11 +31,11 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.JWindow;
@@ -52,6 +51,7 @@ import cs213.photoAlbum.control.BackendController;
 import cs213.photoAlbum.control.PhotoEditorController;
 import cs213.photoAlbum.control.UserEditorController;
 import cs213.photoAlbum.model.Photo;
+import cs213.photoAlbum.model.User;
 import cs213.photoAlbum.util.CollectionListener;
 import cs213.photoAlbum.util.CollectionView;
 import cs213.photoAlbum.util.CustomPanel;
@@ -183,6 +183,11 @@ public class GuiView extends JFrame implements Observer {
 	static HintTextField search;
 
 	static JList<String> aList;
+	static JList<String> uList;
+	static DefaultListModel<String> uListModel;
+
+	static JTextField admin_userid;
+	static JTextField admin_username;
 
 	static Photo[] searchResults;
 
@@ -191,6 +196,9 @@ public class GuiView extends JFrame implements Observer {
 	static BufferedImage[] sortedThumbnails;
 	static DefaultListModel<String> tagsListModel;
 
+	/**
+	 * Builds a new Gui View
+	 */
 	GuiView() {
 		// ########################
 		// Need to revamp this method to build the three collection views!
@@ -226,25 +234,21 @@ public class GuiView extends JFrame implements Observer {
 		File[] thumbnailFilePaths = user.getAllThumbnails();
 
 		BufferedImage allPhotos[];
-		if (false) {
 
-		} else {
+		allPhotos = new BufferedImage[numPhotos];
+		try {
 
-			allPhotos = new BufferedImage[numPhotos];
-			try {
-
-				for (int i = 0; i < numPhotos; i++) {
-					allPhotos[i] = ImageIO.read(thumbnailFilePaths[i]);
-				}
-
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			for (int i = 0; i < numPhotos; i++) {
+				allPhotos[i] = ImageIO.read(thumbnailFilePaths[i]);
 			}
 
-			allPhotosCollection = buildPhotoCollection(allPhotos, "all photos",
-					null, guiview);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+		allPhotosCollection = buildPhotoCollection(allPhotos, "all photos",
+				null, guiview);
 
 		File[] yearThumbnailFilePaths = user.getThumbnails(user.sortPhotos());
 
@@ -299,12 +303,14 @@ public class GuiView extends JFrame implements Observer {
 				collection = new CollectionView(
 						ImageUtilities.getMultipleThumbnails(photos,
 								thumbWidth, thumbHeight), thumbWidth,
-						thumbHeight, contentCardPanel.getWidth(), contentCardPanel.getHeight());
+						thumbHeight, contentCardPanel.getWidth(),
+						contentCardPanel.getHeight());
 			} else {
 				collection = new CollectionView(
 						ImageUtilities.getMultipleThumbnails(photos,
 								thumbWidth, thumbHeight), thumbWidth,
-						thumbHeight, contentCardPanel.getWidth(), contentCardPanel.getHeight(), years);
+						thumbHeight, contentCardPanel.getWidth(),
+						contentCardPanel.getHeight(), years);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -338,6 +344,8 @@ public class GuiView extends JFrame implements Observer {
 
 		buildLoginWindow();
 
+		buildAdminWindow();
+
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 			public void run() {
 				backend.save();
@@ -360,6 +368,10 @@ public class GuiView extends JFrame implements Observer {
 
 		JPanel loginContent = loginScreenPanel();
 
+		// ############# Admin screen setup ###################//
+
+		JPanel adminContent = adminScreenPanel();
+
 		// ############ Main Program Content Laying out ################//
 
 		mainContent = new JPanel();
@@ -372,19 +384,23 @@ public class GuiView extends JFrame implements Observer {
 			public void componentResized(ComponentEvent evt) {
 				// Component c = (Component) evt.getSource();
 				if (albumsCollection != null) {
-					albumsCollection.resized(contentCardPanel.getWidth(), contentCardPanel.getHeight());
+					albumsCollection.resized(contentCardPanel.getWidth(),
+							contentCardPanel.getHeight());
 				}
 
 				if (yearsCollection != null) {
-					yearsCollection.resized(contentCardPanel.getWidth(), contentCardPanel.getHeight());
+					yearsCollection.resized(contentCardPanel.getWidth(),
+							contentCardPanel.getHeight());
 				}
 
 				if (singleAlbumCollection != null) {
-					singleAlbumCollection.resized(contentCardPanel.getWidth(), contentCardPanel.getHeight());
+					singleAlbumCollection.resized(contentCardPanel.getWidth(),
+							contentCardPanel.getHeight());
 				}
 
 				if (allPhotosCollection != null) {
-					allPhotosCollection.resized(contentCardPanel.getWidth(), contentCardPanel.getHeight());
+					allPhotosCollection.resized(contentCardPanel.getWidth(),
+							contentCardPanel.getHeight());
 				}
 
 				frameWidth = mainContent.getWidth();
@@ -415,6 +431,7 @@ public class GuiView extends JFrame implements Observer {
 		mainCardPanel.setLayout(mainCardLayout);
 		mainCardPanel.add(mainContent, "main");
 		mainCardPanel.add(loginContent, "login");
+		mainCardPanel.add(adminContent, "admin");
 		mainCardLayout.show(mainCardPanel, "login");
 
 		// ################ Common Drawing stuff #####################//
@@ -444,7 +461,8 @@ public class GuiView extends JFrame implements Observer {
 		// static JButton searchMakeAlbumButton = new JButton("Make Album");
 
 		searchMakeAlbumButton.setPreferredSize(new Dimension(125, 50));
-		ImageIcon editIcon = new ImageIcon(containerFolder + "/makeAlbumButton.png");
+		ImageIcon editIcon = new ImageIcon(containerFolder
+				+ "/makeAlbumButton.png");
 		searchMakeAlbumButton.setIcon(editIcon);
 		searchMakeAlbumButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent me) {
@@ -540,7 +558,7 @@ public class GuiView extends JFrame implements Observer {
 		return detailsPanel;
 	}
 
-	public static JPanel loginScreenPanel() {
+	private static JPanel loginScreenPanel() {
 		JPanel loginContent = new JPanel();
 		loginContent.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 
@@ -552,7 +570,19 @@ public class GuiView extends JFrame implements Observer {
 
 	}
 
-	public static JPanel mainContentPanel() {
+	protected static JPanel adminScreenPanel() {
+		JPanel adminContent = new JPanel();
+		adminContent.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+
+		ImageIcon adminIcon = new ImageIcon(containerFolder + "/background.png");
+		JLabel adminLabel = new JLabel(adminIcon);
+		adminContent.add(adminLabel, BorderLayout.CENTER);
+
+		return adminContent;
+
+	}
+
+	private static JPanel mainContentPanel() {
 
 		allPhotosPanel = allPhotoContentPanel();
 
@@ -580,20 +610,20 @@ public class GuiView extends JFrame implements Observer {
 
 	// #################### Main Content Panels ###################
 
-	public static JPanel allPhotoContentPanel() {
+	private static JPanel allPhotoContentPanel() {
 		allPhotosPanel = new JPanel();
 		allPhotosPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		return allPhotosPanel;
 
 	}
 
-	public static JPanel albumsContentPanel() {
+	private static JPanel albumsContentPanel() {
 		JPanel albumsPanel = new JPanel();
 		allPhotosPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		return albumsPanel;
 	}
 
-	public static JPanel yearsContentPanel() {
+	private static JPanel yearsContentPanel() {
 		JPanel yearsPanel = new JPanel();
 		yearsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 		return yearsPanel;
@@ -602,7 +632,7 @@ public class GuiView extends JFrame implements Observer {
 
 	// #################### Bottom Details ###################
 
-	public static JPanel bottomPhotoDetailsPanel() {
+	private static JPanel bottomPhotoDetailsPanel() {
 
 		// String nameLabelConstant = "Name: ";
 		// String captionLabelConstant = "Caption: ";
@@ -711,7 +741,7 @@ public class GuiView extends JFrame implements Observer {
 		return detailsPanel;
 	}
 
-	public static JPanel bottomAlbumDetailsPanel() {
+	private static JPanel bottomAlbumDetailsPanel() {
 
 		albumEditButton.setPreferredSize(new Dimension(115, 50));
 		ImageIcon editIcon = new ImageIcon(containerFolder + "/EditButton.png");
@@ -778,7 +808,7 @@ public class GuiView extends JFrame implements Observer {
 		return detailsPanel;
 	}
 
-	public static JPanel bottomYearsDetailsPanel() {
+	private static JPanel bottomYearsDetailsPanel() {
 
 		CustomPanel detailsPanel = new CustomPanel();
 		detailsPanel.setReversed(true);
@@ -857,7 +887,7 @@ public class GuiView extends JFrame implements Observer {
 	}
 
 	// ################### Create Menu ######################/
-	public static JPanel createMenu() {
+	private static JPanel createMenu() {
 
 		icon = new UserIcon('N');
 
@@ -1269,7 +1299,6 @@ public class GuiView extends JFrame implements Observer {
 					break;
 				case (2):
 
-					
 					slider.setValue((int) (yearsCollection.getScale() * 100));
 					slider.setEnabled(false);
 					addLabel.setEnabled(false);
@@ -1287,7 +1316,7 @@ public class GuiView extends JFrame implements Observer {
 		return menuPanel;
 	}
 
-	public static JPanel createGlassPane(JFrame f) {
+	private static JPanel createGlassPane(JFrame f) {
 		JPanel glass = new JPanel() {
 			/**
 			 * 
@@ -1343,7 +1372,7 @@ public class GuiView extends JFrame implements Observer {
 
 	}
 
-	static boolean preLoginLoad() {
+	protected static boolean preLoginLoad() {
 
 		// user = new UserEditorController(backend.loginUser(userString));
 
@@ -1356,6 +1385,10 @@ public class GuiView extends JFrame implements Observer {
 	}
 
 	@Override
+	/**
+	 * captures events from the collection views
+	 * @param o that its catching actions from
+	 */
 	public void update(Observable o, Object arg) {
 
 		// This Captures the events from the collectionView
@@ -1366,7 +1399,7 @@ public class GuiView extends JFrame implements Observer {
 		if (doubleClicked) {
 
 			ActionCatchers.photoDoubleClicked();
-			System.out.println("double clicked");
+			// System.out.println("double clicked");
 		} else {
 
 			ActionCatchers.photoSingleClicked();
@@ -1375,7 +1408,7 @@ public class GuiView extends JFrame implements Observer {
 
 	}
 
-	static void createSingleAlbumView(boolean reuse) {
+	protected static void createSingleAlbumView(boolean reuse) {
 
 		// System.out.println("here");
 		if (reuse == false) {
@@ -1409,7 +1442,7 @@ public class GuiView extends JFrame implements Observer {
 		albumPhotosPanel.repaint();
 	}
 
-	public static void refreshPhotoCollections() {
+	protected static void refreshPhotoCollections() {
 		BuildInitCollections(gui, true);
 
 		allPhotosPanel.removeAll();
@@ -1455,7 +1488,7 @@ public class GuiView extends JFrame implements Observer {
 
 	}
 
-	static void createPhotoViewer(File[] paths, int index) {
+	protected static void createPhotoViewer(File[] paths, int index) {
 
 		viewing = true;
 
@@ -1480,14 +1513,21 @@ public class GuiView extends JFrame implements Observer {
 		photo_viewer_window.setVisible(true);
 	}
 
-	public static void badInput(JTextField box) {
+	protected static void badInput(JTextField box) {
 		box.setBorder(new RoundedCornerBorder(Color.RED));
 	}
 
-	public static void goodInput(JTextField box) {
+	protected static void goodInput(JTextField box) {
 		box.setBorder(new RoundedCornerBorder(new Color(130, 240, 130)));
 	}
 
+	public static void alrightInput(JTextField box) {
+		box.setBorder(new RoundedCornerBorder(Color.LIGHT_GRAY));
+	}
+
+	/**
+	 * Saves the user data
+	 */
 	public static void save() {
 		backend.save();
 	}
@@ -1577,4 +1617,168 @@ public class GuiView extends JFrame implements Observer {
 		// GuiView.glass.requestFocus();
 
 	}
+
+	private static void buildAdminWindow() {
+
+		admin_window = new JWindow(GuiView.frame);
+		admin_window.setAlwaysOnTop(true);
+		admin_window.setPreferredSize(new Dimension(300, 300));
+		admin_window.setLayout(new BoxLayout(admin_window.getContentPane(),
+				BoxLayout.PAGE_AXIS));
+
+		JPanel add_window_grid = new JPanel();
+		add_window_grid.setLayout(new GridBagLayout());
+
+		GridBagConstraints gbc = new GridBagConstraints();
+
+		JLabel title = new JLabel("Admin");
+		title.setFont(new Font("Arial", Font.PLAIN, 25));
+		title.setForeground(Color.GRAY);
+
+		// Add title
+		gbc.insets = new Insets(10, 10, 0, 10);
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.anchor = GridBagConstraints.CENTER;
+		// add_window_grid.add(Box.createRigidArea(new Dimension(40, 40)), gbc);
+
+		add_window_grid.add(title, gbc);
+
+		admin_window.add(add_window_grid);
+
+		JLabel add = new JLabel("add", SwingConstants.CENTER);
+		JLabel delete = new JLabel("delete", SwingConstants.CENTER);
+		GuiView.admin_userid = new HintTextField("");
+		GuiView.admin_username = new HintTextField("");
+
+		GuiView.admin_userid.setPreferredSize(new Dimension(150, 25));
+		GuiView.admin_username.setPreferredSize(new Dimension(150, 25));
+
+		GuiView.uListModel = new DefaultListModel<String>();
+		String[] users = User.getUserIDs();
+		for (String user : users) {
+			GuiView.uListModel.addElement(user);
+		}
+		GuiView.uList = new JList<String>(GuiView.uListModel);
+		GuiView.uList.setSelectedIndex(0);
+		System.out.println(GuiView.uList.getSelectedValue());
+		GuiView.admin_window.add(new JScrollPane(GuiView.uList), gbc);
+
+		delete.setFont(new Font("Arial", Font.PLAIN, 14));
+		add.setFont(new Font("Arial", Font.PLAIN, 14));
+
+		delete.setBackground(new Color(215, 20, 20));
+		delete.setForeground(Color.white);
+		delete.setOpaque(true);
+
+		add.setBackground(new Color(100, 158, 224));
+		add.setForeground(Color.white);
+		add.setOpaque(true);
+
+		JPanel add_delete_Outer = new JPanel(new GridLayout());
+		add_delete_Outer.add(delete);
+		add_delete_Outer.add(add);
+
+		delete.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent me) {
+
+				if (GuiView.uList.getSelectedIndex() > -1) {
+					boolean delete = GuiView.backend.deleteUser(GuiView.uList
+							.getSelectedValue());
+					if (delete) {
+						GuiView.uListModel.remove(GuiView.uList
+								.getSelectedIndex());
+					} else {
+						System.out.println("failed!");
+					}
+				}
+			}
+		});
+
+		add.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent me) {
+				String id = GuiView.admin_userid.getText();
+				String name = GuiView.admin_username.getText();
+				GuiView.alrightInput(GuiView.admin_userid);
+				GuiView.alrightInput(GuiView.admin_username);
+				if (!id.equals("") && !name.equals("")) {
+					boolean add = GuiView.backend.addUser(id, name);
+					if (!add) {
+						GuiView.badInput(GuiView.admin_userid);
+					} else {
+						GuiView.uListModel.addElement(id);
+						GuiView.admin_userid.setText("");
+						GuiView.admin_username.setText("");
+					}
+				} else {
+					if (id.equals(""))
+						GuiView.badInput(GuiView.admin_userid);
+					else
+						GuiView.badInput(GuiView.admin_username);
+
+				}
+			}
+		});
+
+		admin_window.add(Box.createVerticalStrut(10));
+
+		JPanel input_grid = new JPanel();
+		input_grid.setLayout(new GridBagLayout());
+		GridBagConstraints igbc = new GridBagConstraints();
+
+		igbc.gridx = 0;
+		igbc.gridy = 0;
+		igbc.anchor = GridBagConstraints.LINE_END;
+		input_grid.add(new JLabel("Username: "), igbc);
+		igbc.gridx = 1;
+		igbc.gridy = 0;
+		igbc.anchor = GridBagConstraints.LINE_START;
+		input_grid.add(admin_userid, igbc);
+		igbc.gridx = 0;
+		igbc.gridy = 1;
+		igbc.anchor = GridBagConstraints.LINE_END;
+		input_grid.add(new JLabel("Full Name: "), igbc);
+		igbc.gridx = 1;
+		igbc.gridy = 1;
+		igbc.anchor = GridBagConstraints.LINE_START;
+		input_grid.add(admin_username, igbc);
+
+		admin_window.add(input_grid);
+
+		admin_window.add(Box.createVerticalStrut(10));
+
+		admin_window.add(add_delete_Outer);
+
+		admin_window.add(Box.createVerticalStrut(20));
+
+		JLabel back = new JLabel("back", SwingConstants.CENTER);
+
+		back.setFont(new Font("Arial", Font.PLAIN, 25));
+
+		back.setBackground(new Color(108, 153, 231));
+		back.setForeground(Color.DARK_GRAY);
+		back.setOpaque(true);
+
+		JPanel back_Outer = new JPanel(new GridLayout());
+
+		back_Outer.add(back);
+
+		back.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent me) {
+
+				GuiView.mainCardLayout.show(GuiView.mainCardPanel, "login");
+				GuiView.admin_window.setVisible(false);
+				GuiView.login_window.setVisible(true);
+
+			}
+		});
+
+		admin_window.add(back_Outer);
+
+		admin_window.pack();
+		admin_window.setLocationRelativeTo(GuiView.frame);
+		admin_window.setVisible(false);
+
+	}
+
 }

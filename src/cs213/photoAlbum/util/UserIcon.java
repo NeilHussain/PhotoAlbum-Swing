@@ -24,6 +24,10 @@ public class UserIcon extends JLabel {
 
 	int x = 0, y = 0;
 
+	/**
+	 * Constuctor to build a UserIcon object
+	 * @param initial to display on the icon
+	 */
 	public UserIcon(char initial) {
 		// super();
 		this.setPreferredSize(this.size);
@@ -57,33 +61,59 @@ public class UserIcon extends JLabel {
 		super.paintComponent(g);
 	}
 
+	/**
+	 * Returns the width of the UserIcon
+	 * @return Int containing the width of the User Icon
+	 */
 	public int getWidth() {
 
 		return getPreferredSize().width;
 	}
 
+	/**
+	 * Returns the Height of the UserIcon
+	 * @return Int containing the height of the User Icon
+	 */
 	public int getHeight() {
 
 		return getPreferredSize().height;
 	}
 
+	/**Get the preferred size of the component
+	 * @return Dimension object with preferred width and height
+	 */
 	public Dimension getPreferredSize() {
 		return this.size;
 	}
 
+	/**
+	 * Get the minimum displayable size
+	 * @return Dimension object with minimum width and height
+	 */
 	public Dimension getMinimumSize() {
 		return getPreferredSize();
 	}
 
+	/**
+	 * Get the maximum displayable size
+	 * @return Dimension object with maximum width and height
+	 */
 	public Dimension getMaximumSize() {
 		return getPreferredSize();
 	}
 	
-
+	/**
+	 * Get the initial displayed on the Icon
+	 * @return char initial
+	 */
 	public char getInitial() {
 		return initial;
 	}
 
+	/**
+	 * Set the initial displayed on the Icon
+	 * @param char initial to display
+	 */
 	public void setInitial(char initial) {
 		this.initial = initial;
 	}
